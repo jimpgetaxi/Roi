@@ -11,4 +11,13 @@
     <string name="daily_highlight_display">Highlight Σήμερα: %s</string>
     <string name="sprints_section_title">Τα Sprints σου</string>
     <string name="kanban_section_title">Το Kanban σου</string>
+
+    <!-- Sprint Mode Screen -->
+    <string name="sprint_mode_title">Λειτουργία Sprint</string>
+    <string name="start_sprint_button">Έναρξη Sprint</string>
+    <string name="pause_sprint_button">Παύση Sprint</string>
+    <string name="resume_sprint_button">Συνέχιση Sprint</string>
+    <string name="stop_sprint_button">Τερματισμός Sprint</string>
+    <string name="sprint_finished_message">Το Sprint ολοκληρώθηκε!</string>
+    <string name="minutes_label">%d λεπτά</string>
 </resources>

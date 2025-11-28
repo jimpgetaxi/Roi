@@ -1,5 +1,6 @@
 package com.flow.app.ui.screens.dashboard
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,12 +24,11 @@ import com.flow.app.R
 
 @Composable
 fun DashboardScreen(
-    dailyHighlightText: String, // This will be passed from NavGraph
+    dailyHighlightText: String,
     onNavigateToSprint: () -> Unit,
     viewModel: DashboardViewModel = viewModel()
 ) {
     // Update the ViewModel with the passed highlight text
-    // This is important if we navigate directly to dashboard or rotate device
     viewModel.updateDailyHighlight(dailyHighlightText)
     val currentDailyHighlight by viewModel.dailyHighlight.collectAsState()
 
@@ -47,6 +47,7 @@ fun DashboardScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
+        // Daily Highlight Card
         Card(
             modifier = Modifier.fillMaxWidth(),
             colors = CardDefaults.cardColors(
@@ -64,6 +65,7 @@ fun DashboardScreen(
 
         Spacer(modifier = Modifier.height(32.dp))
 
+        // Sprints Section
         Text(
             text = stringResource(R.string.sprints_section_title),
             style = MaterialTheme.typography.headlineSmall,
@@ -72,13 +74,14 @@ fun DashboardScreen(
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(120.dp), // Placeholder height
+                .height(120.dp)
+                .clickable { onNavigateToSprint() }, // Made clickable
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surface
             )
         ) {
             Text(
-                text = "Εδώ θα εμφανίζονται τα Sprints",
+                text = "Πάτησε εδώ για να ξεκινήσεις ένα Sprint", // Updated text to indicate action
                 modifier = Modifier.padding(16.dp),
                 color = MaterialTheme.colorScheme.onSurface
             )
@@ -86,6 +89,7 @@ fun DashboardScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        // Kanban Section
         Text(
             text = stringResource(R.string.kanban_section_title),
             style = MaterialTheme.typography.headlineSmall,
@@ -94,7 +98,7 @@ fun DashboardScreen(
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(180.dp), // Placeholder height
+                .height(180.dp),
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surface
             )

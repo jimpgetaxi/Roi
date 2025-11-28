@@ -1,6 +1,6 @@
 package com.flow.app
 
-import android.net.Uri // Import for URL encoding
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -23,9 +23,10 @@ import androidx.navigation.navArgument
 import com.flow.app.ui.navigation.Screen
 import com.flow.app.ui.screens.daily_highlight.DailyHighlightScreen
 import com.flow.app.ui.screens.daily_highlight.DailyHighlightViewModel
-import com.flow.app.ui.screens.dashboard.DashboardScreen // Import DashboardScreen
+import com.flow.app.ui.screens.dashboard.DashboardScreen
+import com.flow.app.ui.screens.sprint_mode.SprintModeScreen // Import SprintModeScreen
 import com.flow.app.ui.theme.FlowAppTheme
-import androidx.lifecycle.viewmodel.compose.viewModel // Import for viewModel()
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,13 +58,13 @@ fun NavigationGraph(
         modifier = modifier
     ) {
         composable(Screen.DailyHighlight.route) { backStackEntry ->
-            val dailyHighlightViewModel: DailyHighlightViewModel = viewModel(backStackEntry) // Use viewModel with backStackEntry
+            val dailyHighlightViewModel: DailyHighlightViewModel = viewModel(backStackEntry)
             DailyHighlightScreen(
                 viewModel = dailyHighlightViewModel,
                 onNavigateToDashboard = {
                     val highlightText = dailyHighlightViewModel.highlightText.value
                     if (highlightText.isNotBlank()) {
-                        val encodedHighlight = Uri.encode(highlightText) // URL encode the text
+                        val encodedHighlight = Uri.encode(highlightText)
                         navController.navigate(Screen.Dashboard.route.replace("{dailyHighlight}", encodedHighlight))
                     }
                 }
@@ -82,7 +83,11 @@ fun NavigationGraph(
             )
         }
         composable(Screen.SprintMode.route) {
-            ScreenPlaceholder(title = "Sprint Mode Screen")
+            SprintModeScreen(
+                onSprintFinished = {
+                    navController.popBackStack() // Navigate back to Dashboard
+                }
+            )
         }
         composable(Screen.Settings.route) {
             ScreenPlaceholder(title = "Settings Screen")
