@@ -22,7 +22,7 @@ fun SprintModeScreen(
 ) {
     val timeRemaining by viewModel.timeRemaining.collectAsState()
     val isRunning by viewModel.isRunning.collectAsState()
-    val sprintDuration by viewModel.sprintDuration.collectAsState() // Not used directly in UI yet, but available
+    val sprintDuration by viewModel.sprintDuration.collectAsState()
 
     Column(
         modifier = Modifier
@@ -111,12 +111,35 @@ fun SprintModeScreen(
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        // Duration selection - simple text for now
-        Text(
-            text = stringResource(R.string.minutes_label, sprintDuration / (60 * 1000)),
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onSurface
-        )
+        // Duration selection
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(
+                text = stringResource(R.string.select_duration_label),
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onSurface,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            // Changed from Row to FlowRow for better layout on smaller screens
+            FlowRow(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center,
+                verticalArrangement = Arrangement.spacedBy(8.dp) // Spacing between rows/items
+            ) {
+                listOf(15L, 25L, 45L, 90L).forEach { duration ->
+                    Button(
+                        onClick = { viewModel.setSprintDuration(duration) },
+                        enabled = !isRunning, // Cannot change duration while sprint is running
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = if (sprintDuration == duration * 60 * 1000L) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondaryContainer,
+                            contentColor = if (sprintDuration == duration * 60 * 1000L) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSecondaryContainer
+                        ),
+                        modifier = Modifier.padding(horizontal = 4.dp) // Small horizontal padding for buttons
+                    ) {
+                        Text(stringResource(R.string.minutes_label, duration))
+                    }
+                }
+            }
+        }
     }
 }
 

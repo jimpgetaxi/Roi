@@ -20,4 +20,5 @@
     <string name="stop_sprint_button">Τερματισμός Sprint</string>
     <string name="sprint_finished_message">Το Sprint ολοκληρώθηκε!</string>
     <string name="minutes_label">%d λεπτά</string>
+    <string name="select_duration_label">Επιλογή διάρκειας:</string>
 </resources>
