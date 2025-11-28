@@ -5,4 +5,10 @@
     <string name="daily_highlight_question">Ποιο είναι το Highlight της ημέρας;</string>
     <string name="daily_highlight_hint">Γράψε τον βασικό στόχο...</string>
     <string name="focus_button">Εστίαση</string>
+
+    <!-- Dashboard Screen -->
+    <string name="dashboard_title">Το Ταμπλό σου</string>
+    <string name="daily_highlight_display">Highlight Σήμερα: %s</string>
+    <string name="sprints_section_title">Τα Sprints σου</string>
+    <string name="kanban_section_title">Το Kanban σου</string>
 </resources>
