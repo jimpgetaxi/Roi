@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Ροή</string>
+    
+    <!-- Daily Highlight Screen -->
+    <string name="daily_highlight_question">Ποιο είναι το Highlight της ημέρας;</string>
+    <string name="daily_highlight_hint">Γράψε τον βασικό στόχο...</string>
+    <string name="focus_button">Εστίαση</string>
 </resources>

@@ -18,6 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.flow.app.ui.navigation.Screen
+import com.flow.app.ui.screens.daily_highlight.DailyHighlightScreen // Import the new DailyHighlightScreen
 import com.flow.app.ui.theme.FlowAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -50,7 +51,11 @@ fun NavigationGraph(
         modifier = modifier
     ) {
         composable(Screen.DailyHighlight.route) {
-            ScreenPlaceholder(title = "Daily Highlight Screen")
+            DailyHighlightScreen(
+                onNavigateToDashboard = {
+                    navController.navigate(Screen.Dashboard.route)
+                }
+            )
         }
         composable(Screen.Dashboard.route) {
             ScreenPlaceholder(title = "Dashboard Screen")

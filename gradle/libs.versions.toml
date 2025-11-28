@@ -1,9 +1,9 @@
 [versions]
 agp = "8.13.1"
 kotlin = "2.0.21"
-ksp = "1.9.21-1.0.16" # Added KSP version
-room = "2.6.1"       # Added Room version
-navigation = "2.7.7" # Added Navigation version
+ksp = "2.0.21-1.0.25" # Updated KSP version to match Kotlin 2.0.21
+room = "2.6.1"
+navigation = "2.7.7"
 coreKtx = "1.17.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
@@ -27,11 +27,11 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
-# Added Room dependencies
+# Room dependencies
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
-# Added Navigation Compose dependency
+# Navigation Compose dependency
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 
 
@@ -39,4 +39,4 @@ navigation-compose = { group = "androidx.navigation", name = "navigation-compose
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" } # Added KSP plugin
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
